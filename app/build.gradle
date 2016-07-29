@@ -13,7 +13,12 @@ android {
         jackOptions{
             enabled true
         }
+
+        multiDexEnabled true
     }
+
+
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -32,9 +37,12 @@ android {
 
 }
 
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile files('libs/java-core-0.1.jar')
+    compile 'com.android.support:multidex:1.0.1'
+    compile files('libs/org.apache.http.legacy.jar')
 }
