@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import istsos.EventObject;
 import istsos.IstSOS;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void describeSensor(View view){
 
+        Button button = (Button) findViewById(R.id.button);
+
         IstSOS sos = IstSOS.getInstance();
 
         String serverName = "localhost";
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(EventObject event) {
+
 
                 Service service = server.getService("demo");
 
