@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:orientation="vertical"
     tools:context="org.istsos.androiddemo.MainActivity">
 
 
@@ -16,5 +17,25 @@
         android:text="@string/describe_sensor"
         android:onClick="describeSensor"
         android:id="@+id/button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RegisterSensor"
+        android:onClick="registerSensor"
+        android:id="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="InsertObservation"
+        android:onClick="insertObservation"
+        android:id="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
 </LinearLayout>

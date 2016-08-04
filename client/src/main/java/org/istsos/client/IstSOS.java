@@ -1,11 +1,13 @@
 package org.istsos.client;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
 import com.loopj.android.http.*;
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.entity.StringEntity;
 
 import com.google.gson.JsonParser;
 
@@ -57,7 +59,6 @@ public class IstSOS{
     }
 
 
-
     protected static void executeGet(String url, final IstSOSListener callback, ArrayList<String> realm){
 
 		RequestParams params = new RequestParams();
@@ -93,138 +94,117 @@ public class IstSOS{
     //post request
     protected static void executePost(String url, String data, final IstSOSListener callback, ArrayList<String> realm) {
 
-        //TODO: implement post request
-    	/*BoundRequestBuilder builder = asyncHttpClient.preparePost(url).setBody(data);
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(data);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
-    	if(realm != null){
-			Realm tmpRealm = new Realm.Builder(realm.get(0), realm.get(1))
-					.setUsePreemptiveAuth(true)
-					.setScheme(AuthScheme.BASIC)
-					.build();
-			builder.setRealm(tmpRealm);
-    	}
-    	
-    	builder.execute(new AsyncCompletionHandler<Integer>(){
-    		
-    		@Override
-		    public Integer onCompleted(Response response) throws Exception {
-    			
-		    	System.out.println("Request executed..");
-		    	
-		        EventObject eventObject = new EventObject(
-		        		Event.REQUEST, 
-		        		new JsonParser()
-					        .parse(response.getResponseBody())
-					        .getAsJsonObject());
-        		
-        		if(callback != null){
-        			callback.onSuccess(eventObject);
-        		}
-        		
-		        return response.getStatusCode();
-    			
-    		}
-    		
-		    @Override
-		    public void onThrowable(Throwable t){
-		    	System.out.println("Request error!!");
-		    	System.out.println(t.getMessage());
-		    	t.printStackTrace();
-		    }
-		    
-    	});*/
-    	
+        asyncHttpClient.post(null, url, entity, "application/json", new TextHttpResponseHandler() {
+					@Override
+					public void onSuccess(int statusCode, Header[] headers, String res) {
+						// called when response HTTP status is "200 OK"
+						System.out.println("Request executed..");
+
+						EventObject eventObject = new EventObject(
+								Event.REQUEST,
+								new JsonParser()
+										.parse(res)
+										.getAsJsonObject());
+
+						if(callback != null){
+							callback.onSuccess(eventObject);
+						}
+					}
+
+					@Override
+					public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
+						// called when response HTTP status is "4XX" (eg. 401, 403, 404)
+						System.out.println("Request failed");
+						System.out.println("Status code: " + statusCode);
+						System.out.println(res);
+					}
+				}
+		);
+
     	
     }
     
     //put request
     protected static void executePut(String url, String data, final IstSOSListener callback, ArrayList<String> realm) {
 
-        //TODO: implement put request
-    	/*BoundRequestBuilder builder = asyncHttpClient.preparePut(url).setBody(data);
-    	
-    	if(realm != null){
-			Realm tmpRealm = new Realm.Builder(realm.get(0), realm.get(1))
-					.setUsePreemptiveAuth(true)
-					.setScheme(AuthScheme.BASIC)
-					.build();
-			builder.setRealm(tmpRealm);
-    	}
-    	
-    	builder.execute(new AsyncCompletionHandler<Integer>(){
-    		
-    		@Override
-		    public Integer onCompleted(Response response) throws Exception {
-    			
-		    	System.out.println("Request executed..");
-		    	
-		        EventObject eventObject = new EventObject(
-		        		Event.REQUEST, 
-		        		new JsonParser()
-					        .parse(response.getResponseBody())
-					        .getAsJsonObject());
-        		
-        		if(callback != null){
-        			callback.onSuccess(eventObject);
-        		}
-        		
-		        return response.getStatusCode();
-    			
-    		}
-    		
-		    @Override
-		    public void onThrowable(Throwable t){
-		    	System.out.println("Request error!!");
-		    	System.out.println(t.getMessage());
-		    	t.printStackTrace();
-		    }
-		    
-    	});*/
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(data);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        asyncHttpClient.post(null, url, entity, "application/json", new TextHttpResponseHandler() {
+					@Override
+					public void onSuccess(int statusCode, Header[] headers, String res) {
+						// called when response HTTP status is "200 OK"
+						System.out.println("Request executed..");
+
+						EventObject eventObject = new EventObject(
+								Event.REQUEST,
+								new JsonParser()
+										.parse(res)
+										.getAsJsonObject());
+
+						if(callback != null){
+							callback.onSuccess(eventObject);
+						}
+					}
+
+					@Override
+					public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
+						// called when response HTTP status is "4XX" (eg. 401, 403, 404)
+						System.out.println("Request failed");
+						System.out.println("Status code: " + statusCode);
+						System.out.println(res);
+					}
+				}
+		);
         
     }
     
     protected static void executeDelete(String url, String data, final IstSOSListener callback, ArrayList<String> realm){
 
-        //TODO: implement delete request
-   		/*BoundRequestBuilder builder = asyncHttpClient.prepareDelete(url).setBody(data);
-    	
-    	if(realm != null){
-			Realm tmpRealm = new Realm.Builder(realm.get(0), realm.get(1))
-					.setUsePreemptiveAuth(true)
-					.setScheme(AuthScheme.BASIC)
-					.build();
-			builder.setRealm(tmpRealm);
-    	}
-    	
-    	builder.execute(new AsyncCompletionHandler<Integer>(){
-    		
-    		@Override
-		    public Integer onCompleted(Response response) throws Exception {
-    			
-		    	System.out.println("Request executed..");
-		    	
-		        EventObject eventObject = new EventObject(
-		        		Event.REQUEST, 
-		        		new JsonParser()
-					        .parse(response.getResponseBody())
-					        .getAsJsonObject());
-        		
-        		if(callback != null){
-        			callback.onSuccess(eventObject);
-        		}
-        		
-		        return response.getStatusCode();
-    			
-    		}
-    		
-		    @Override
-		    public void onThrowable(Throwable t){
-		    	System.out.println("Request error!!");
-		    	System.out.println(t.getMessage());
-		    	t.printStackTrace();
-		    }
-		    
-    	});*/
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(data);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        asyncHttpClient.post(null, url, entity, "application/json", new TextHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, String res) {
+                        // called when response HTTP status is "200 OK"
+                        System.out.println("Request executed..");
+
+                        EventObject eventObject = new EventObject(
+                                Event.REQUEST,
+                                new JsonParser()
+                                        .parse(res)
+                                        .getAsJsonObject());
+
+                        if(callback != null){
+                            callback.onSuccess(eventObject);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
+                        // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                        System.out.println("Request failed");
+                        System.out.println("Status code: " + statusCode);
+                        System.out.println(res);
+                    }
+                }
+        );
     	
     }
 
