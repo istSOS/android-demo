@@ -3,13 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="20dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="20dp"
     android:orientation="vertical"
+    android:background="@color/colorAccent"
     tools:context="org.istsos.androiddemo.MainActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:elevation="5dp">
+    </include>
+
+    <ViewFlipper
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewFlipper" />
 
     <Button
         android:layout_width="wrap_content"
@@ -18,7 +25,8 @@
         android:onClick="describeSensor"
         android:id="@+id/button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal" />
 
 
     <Button
@@ -28,7 +36,8 @@
         android:onClick="registerSensor"
         android:id="@+id/button2"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
@@ -37,5 +46,6 @@
         android:onClick="insertObservation"
         android:id="@+id/button3"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
