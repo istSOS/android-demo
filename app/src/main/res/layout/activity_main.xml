@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorAccent"
-    tools:context="org.istsos.androiddemo.MainActivity">
+    tools:context="org.istsos.androiddemo.MainActivity"
+    android:gravity="fill">
 
     <include
         android:id="@+id/toolbar"
@@ -13,39 +14,20 @@
         android:elevation="5dp">
     </include>
 
-    <ViewFlipper
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewFlipper" />
 
-    <Button
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/describe_sensor"
-        android:onClick="describeSensor"
-        android:id="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginTop="30dp"
+        android:text="@string/services"
+        android:layout_marginBottom="5dp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/title"
+        android:id="@+id/spinner"
+        />
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RegisterSensor"
-        android:onClick="registerSensor"
-        android:id="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="InsertObservation"
-        android:onClick="insertObservation"
-        android:id="@+id/button3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center_horizontal" />
 </LinearLayout>

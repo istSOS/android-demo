@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">AndroidDemo</string>
-    <string name="describe_sensor">DescribeSensor</string>
+    <string name="app_name">IstSOS App</string>
+    <string name="services">Services</string>
+
 </resources>
