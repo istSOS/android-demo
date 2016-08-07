@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">IstSOS App</string>
-    <string name="services">Services</string>
+    <string name="services">Available Services</string>
+    <string name="load_services">Load services</string>
+    <string name="service_loader">Press to load services</string>
 
 </resources>
