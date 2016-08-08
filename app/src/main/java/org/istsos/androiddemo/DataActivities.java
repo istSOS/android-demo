@@ -1,164 +1,81 @@
 package org.istsos.androiddemo;
 
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import org.istsos.client.EventObject;
-import org.istsos.client.IstSOS;
-import org.istsos.client.IstSOSListener;
-import org.istsos.client.Procedure;
-import org.istsos.client.Server;
-import org.istsos.client.Service;
 
 /**
  * Created by Florin on 8/7/2016.
  */
 public class DataActivities extends AppCompatActivity {
 
-    private SensorManager mSensorManager;
-    private Sensor mTemperature;
+    ListView listView;
 
 
-    public void describeSensor(View view){
-        IstSOS sos = IstSOS.getInstance();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_data);
 
-        String serverName = "localhost";
-        sos.initServer(serverName, "http://istsos.org/istsos/");
+        listView = (ListView) findViewById(R.id.list);
+        String[] values = new String[]{"Get observation", "Insert observation", "Describe sensor",
+                "Register sensor",};
 
-        final Server server = sos.getServer(serverName);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
-        server.loadServices(new IstSOSListener() {
+        listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onSuccess(EventObject event) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                Intent intent;
 
-                Service service = server.getService("demo");
+                switch(position){
 
-                service.describeSensor("BELLINZONA", new IstSOSListener() {
-                    @Override
-                    public void onSuccess(EventObject event) {
+                    case 0:
+                        intent = new Intent(DataActivities.this, DisplayGetObservation.class);
+                        startActivity(intent);
+                        break;
 
-                        //store data from DescribeSensor
-                        Procedure procedure = (Procedure) event.getObject();
-                        //show data from procedure
-                        System.out.println(procedure.getName());
-                        System.out.println(procedure.getLocation());
-                    }
+                    case 1:
+                        intent = new Intent(DataActivities.this, DisplayInsObservation.class);
+                        startActivity(intent);
+                        break;
 
-                    @Override
-                    public void onError(EventObject event) {
+                    case 2:
+                        intent = new Intent(DataActivities.this, DisplayDescribeSensor.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(DataActivities.this, DisplayRegSensor.class);
+                        startActivity(intent);
+                        break;
 
-                    }
-                });
-            }
-
-
-            @Override
-            public void onError(EventObject event) {
-
-
-
-            }
-
-        });
-    }
-
-    public void registerSensor(View view){
-
-        IstSOS sos = IstSOS.getInstance();
-
-        String serverName = "localhost";
-        sos.initServer(serverName, "http://istsos.org/istsos/");
-
-        final Server server = sos.getServer(serverName);
-
-        server.loadServices(new IstSOSListener() {
-
-            @Override
-            public void onSuccess(EventObject event) {
-
-                final Service service = server.getService("demo");
-
-                service.describeSensor("T_LUGANO", new IstSOSListener() {
-                    @Override
-                    public void onSuccess(EventObject event) {
-
-                        //store data from DescribeSensor
-                        Procedure procedure = (Procedure) event.getObject();
-                        //change name
-                        procedure.setSystem("T_MURES");
-
-                        service.registerSensor(procedure, new IstSOSListener() {
-                            @Override
-                            public void onSuccess(EventObject event) {
-
-
-
-                            }
-
-                            @Override
-                            public void onError(EventObject event) {
-
-                            }
-                        });
-
-                    }
-
-                    @Override
-                    public void onError(EventObject event) {
-
-                    }
-                });
-
-
-
-            }
-
-            @Override
-            public void onError(EventObject event) {
+                    default:
+                        break;
+                }
 
             }
         });
     }
 
 
-    public void insertObservation(View view){
-
-        IstSOS sos = IstSOS.getInstance();
-
-        String serverName = "localhost";
-        sos.initServer(serverName, "http://istsos.org/istsos/");
-
-        final Server server = sos.getServer(serverName);
-
-        server.loadServices(new IstSOSListener() {
-
-            @Override
-            public void onSuccess(EventObject event) {
-
-                Service service = server.getService("demo");
-
-                mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-                mTemperature = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
-
-                //service.describeSensor("");
-
-                //service.insertObservation();
 
 
-            }
 
-            @Override
-            public void onError(EventObject event) {
 
-            }
-        });
-    }
+
+
+
 
 
 
