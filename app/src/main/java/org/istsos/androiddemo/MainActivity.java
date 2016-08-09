@@ -19,12 +19,11 @@ import org.istsos.client.Server;
 import org.istsos.client.Service;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private ArrayList<Service> servicesLoadedInApp = null;
-    private ArrayAdapter<String> servicesArrayAdapter = null;
+    private ArrayList<Service> servicesLoadedInApp = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,37 +35,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
-        if (spinner != null) {
-            spinner.setOnItemSelectedListener(this);
-        }
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerAdapter.clear();
 
         //convert to array adapter type string
         for (Service service : servicesLoadedInApp){
 
-            servicesArrayAdapter.add(service.getName());
+            spinnerAdapter.add(service.getName());
         }
 
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, (List<String>) servicesArrayAdapter);
-
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerAdapter);
+        if (spinner != null) {
+            spinner.setAdapter(spinnerAdapter);
+        }
         spinnerAdapter.notifyDataSetChanged();
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                Intent intent = new Intent(MainActivity.this, DataActivities.class);
-                MainActivity.this.startActivity(intent);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     public void loadServicesInApp(View view){
@@ -99,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
+
+        Intent intent = new Intent(MainActivity.this, DataActivities.class);
+        MainActivity.this.startActivity(intent);
 
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
