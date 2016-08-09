@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent">
 
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
@@ -16,7 +17,7 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@android:color/darker_gray"
+        android:divider="@color/colorPrimary"
         android:dividerHeight="3.0sp"
         />
 
