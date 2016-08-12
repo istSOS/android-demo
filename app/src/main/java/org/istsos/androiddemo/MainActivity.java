@@ -24,6 +24,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private ArrayList<Service> servicesLoadedInApp = new ArrayList<>();
+    Spinner spinner;
+    ArrayAdapter<String> spinnerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,24 +35,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item);
-
-        spinnerAdapter.clear();
-
-        //convert to array adapter type string
-        for (Service service : servicesLoadedInApp){
-
-            spinnerAdapter.add(service.getName());
-        }
-
-        if (spinner != null) {
-            spinner.setAdapter(spinnerAdapter);
-        }
-        spinnerAdapter.notifyDataSetChanged();
-
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
     }
 
@@ -75,6 +60,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             }
         });
+
+        //convert to array adapter type string
+        for (Service service : servicesLoadedInApp){
+
+            spinnerAdapter.add(service.getName());
+        }
+
+        if (spinner != null) {
+            spinner.setAdapter(spinnerAdapter);
+        }
+
+        spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerAdapter.clear();
+
+        spinnerAdapter.notifyDataSetChanged();
+
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
     }
 
 
