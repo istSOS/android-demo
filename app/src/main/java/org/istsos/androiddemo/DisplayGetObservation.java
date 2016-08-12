@@ -95,12 +95,7 @@ public class DisplayGetObservation extends AppCompatActivity{
 
         public void handleObservation(View view) {
 
-            IstSOS sos = IstSOS.getInstance();
-
-            String serverName = "localhost";
-            sos.initServer(serverName, "http://istsos.org/istsos/");
-
-            final Server server = sos.getServer(serverName);
+            final Server server = IstSOS.getInstance().getServer("localhost");
 
             server.loadServices(new IstSOSListener() {
                 @Override

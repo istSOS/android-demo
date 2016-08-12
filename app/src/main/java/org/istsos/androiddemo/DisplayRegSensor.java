@@ -25,12 +25,8 @@ public class DisplayRegSensor extends AppCompatActivity{
 
     public void registerSensor(View view){
 
-        IstSOS sos = IstSOS.getInstance();
+        final Server server = IstSOS.getInstance().getServer("localhost");
 
-        String serverName = "localhost";
-        sos.initServer(serverName, "http://istsos.org/istsos/");
-
-        final Server server = sos.getServer(serverName);
 
         server.loadServices(new IstSOSListener() {
 
@@ -51,7 +47,6 @@ public class DisplayRegSensor extends AppCompatActivity{
                         service.registerSensor(procedure, new IstSOSListener() {
                             @Override
                             public void onSuccess(EventObject event) {
-
 
 
                             }
