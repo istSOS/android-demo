@@ -21,7 +21,7 @@ Can be done in a few steps:
 
 ## Documentation
 
-You can check the following [tutorial](https://github.com/masterflorin/android-demo/TUTORIAL.md) to get your feet wet on developing an
+You can check the following [tutorial](https://github.com/masterflorin/android-demo/blob/master/TUTORIAL.md) to get your feet wet on developing an
 Android app using the Java core.
 
 If you want to check out the Java core documentation, have a look [here](https://github.com/masterflorin/java-core/blob/master/UserGuide.md)
