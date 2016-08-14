@@ -23,9 +23,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    private final String LOG_TAG = MainActivity.class.getSimpleName();
+
     private ArrayList<Service> servicesLoadedInApp = new ArrayList<>();
     Spinner spinner;
-    ArrayAdapter<String> spinnerAdapter;
+    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         spinner = (Spinner) findViewById(R.id.spinner);
 
-        spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item);
+
 
     }
 
@@ -56,22 +58,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 servicesLoadedInApp = (ArrayList<Service>)server.getServices();
 
+                spinnerAdapter.clear();
                 //convert to array adapter type string
                 for (Service service : servicesLoadedInApp){
 
                     spinnerAdapter.add(service.getName());
                 }
 
-                if (spinner != null) {
-                    spinner.setAdapter(spinnerAdapter);
-                }
+
+                spinner.setAdapter(spinnerAdapter);
 
                 //refresh adapter
-                spinnerAdapter.clear();
 
                 spinnerAdapter.notifyDataSetChanged();
 
-                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             }
 
             @Override
@@ -80,10 +80,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-
-
     }
-
 
 
     @Override

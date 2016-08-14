@@ -4,7 +4,7 @@
     <string name="load_services">Load services</string>
     <string name="service_loader">Press to load services</string>
     <string name="available_services">Available services</string>
-    
+
     <string-array name="servicesArrayAdapter">
 
     </string-array>

@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/toolbar"
-        android:layout="@layout/toolbar"
+        layout="@layout/toolbar"
         android:elevation="5dp">
     </include>
 

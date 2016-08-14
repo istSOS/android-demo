@@ -16,7 +16,7 @@ import org.istsos.client.Service;
 /**
  * Created by Florin on 8/8/2016.
  */
-public class DisplayInsObservation extends AppCompatActivity{
+public class DisplayInsertObservation extends AppCompatActivity{
 
     private SensorManager mSensorManager;
     private Sensor mTemperature;
@@ -24,7 +24,7 @@ public class DisplayInsObservation extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ins_observation);
+        setContentView(R.layout.activity_display_insert_observation);
     }
 
     public void insertObservation(View view){

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.istsos.androiddemo">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,15 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".DataActivities">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".DataActivities" />
+        <activity android:name=".DisplayGetObservation" />
+        <activity android:name=".DisplayDescribeSensor" />
+        <activity android:name=".DisplayInsertObservation" />
+        <activity android:name=".DisplayRegisterSensor"></activity>
     </application>
 
 </manifest>

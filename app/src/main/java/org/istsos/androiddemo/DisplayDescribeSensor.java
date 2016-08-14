@@ -22,7 +22,7 @@ public class DisplayDescribeSensor extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.describe_sensor);
+        setContentView(R.layout.activity_display_describe_sensor);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);

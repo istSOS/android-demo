@@ -14,14 +14,13 @@ import org.istsos.client.Service;
 /**
  * Created by Florin on 8/8/2016.
  */
-public class DisplayRegSensor extends AppCompatActivity{
+public class DisplayRegisterSensor extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_sensor);
+        setContentView(R.layout.activity_display_register_sensor);
     }
-
 
     public void registerSensor(View view){
 

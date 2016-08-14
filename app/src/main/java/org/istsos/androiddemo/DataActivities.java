@@ -25,7 +25,7 @@ public class DataActivities extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data);
+        setContentView(R.layout.activity_data_activities);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
@@ -53,7 +53,7 @@ public class DataActivities extends AppCompatActivity {
                         break;
 
                     case 1:
-                        intent = new Intent(DataActivities.this, DisplayInsObservation.class);
+                        intent = new Intent(DataActivities.this, DisplayInsertObservation.class);
                         startActivity(intent);
                         break;
 
@@ -62,7 +62,7 @@ public class DataActivities extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 3:
-                        intent = new Intent(DataActivities.this, DisplayRegSensor.class);
+                        intent = new Intent(DataActivities.this, DisplayRegisterSensor.class);
                         startActivity(intent);
                         break;
 
