@@ -57,8 +57,6 @@ public class ObservationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        //loadServicesInApp();
-
         ArrayList<String> options = new ArrayList<>();
         options.add("Get observation");
         options.add("Insert observation");
@@ -66,14 +64,14 @@ public class ObservationFragment extends Fragment {
         options.add("Register sensor");
 
         mObservationAdapter = new ArrayAdapter<String>(getActivity(),
-                R.layout.list_item_services,
-                R.id.list_item_service_textview,
+                R.layout.list_item_observation,
+                R.id.list_item_observation_textview,
                 options);
 
-        View rootView = inflater.inflate(R.layout.fragment_services, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_observation, container, false);
 
         //get reference to the listView
-        ListView listView = (ListView) rootView.findViewById(R.id.listview_services);
+        ListView listView = (ListView) rootView.findViewById(R.id.listview_observation);
         listView.setAdapter(mObservationAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
