@@ -1,6 +1,5 @@
 package org.istsos.androiddemo;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,23 +12,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import org.istsos.client.EventObject;
-import org.istsos.client.IstSOS;
-import org.istsos.client.IstSOSListener;
-import org.istsos.client.Server;
-import org.istsos.client.Service;
 
 import java.util.ArrayList;
 
 
-public class ServicesFragment extends Fragment {
+public class ObservationFragment extends Fragment {
 
-    private ArrayAdapter<String> mServicesAdapter;
-    private ArrayList<Service> services = new ArrayList<>();
+    private ArrayAdapter<String> mObservationAdapter;
 
-    public ServicesFragment(){
+    public ObservationFragment(){
 
     }
 
@@ -65,67 +57,59 @@ public class ServicesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        loadServicesInApp();
+        //loadServicesInApp();
 
-        mServicesAdapter = new ArrayAdapter<String>(getActivity(),
+        ArrayList<String> options = new ArrayList<>();
+        options.add("Get observation");
+        options.add("Insert observation");
+        options.add("Describe sensor");
+        options.add("Register sensor");
+
+        mObservationAdapter = new ArrayAdapter<String>(getActivity(),
                 R.layout.list_item_services,
                 R.id.list_item_service_textview,
-                new ArrayList<String>());
+                options);
 
         View rootView = inflater.inflate(R.layout.fragment_services, container, false);
 
         //get reference to the listView
         ListView listView = (ListView) rootView.findViewById(R.id.listview_services);
-        listView.setAdapter(mServicesAdapter);
+        listView.setAdapter(mObservationAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String toService = mServicesAdapter.getItem(position);
-                Toast.makeText(getActivity(), toService, Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getActivity(), ObservationActivities.class);
-                startActivity(intent);
+                Intent intent;
+
+                switch(position){
+
+                    case 0:
+                        intent = new Intent(getActivity(), DisplayGetObservation.class);
+                        startActivity(intent);
+                        break;
+
+                    case 1:
+                        intent = new Intent(getActivity(), DisplayInsertObservation.class);
+                        startActivity(intent);
+                        break;
+
+                    case 2:
+                        intent = new Intent(getActivity(), DisplayDescribeSensor.class);
+                        startActivity(intent);
+                        break;
+
+                    case 3:
+                        intent = new Intent(getActivity(), DisplayRegisterSensor.class);
+                        startActivity(intent);
+                        break;
+
+                    default:
+                        break;
+                }
             }
         });
 
         return rootView;
     }
-
-    protected void loadServicesInApp(){
-
-        IstSOS sos = IstSOS.getInstance();
-
-        String serverName = "localhost";
-        sos.initServer(serverName, "http://istsos.org/istsos/");
-
-        final Server server = sos.getServer(serverName);
-
-        server.loadServices(new IstSOSListener() {
-            @Override
-            public void onSuccess(EventObject event) {
-
-                services = (ArrayList<Service>)server.getServices();
-
-                if(services != null){
-                    mServicesAdapter.clear();
-
-                    for(Service service : services){
-                        mServicesAdapter.add(service.getName());
-                    }
-                }
-
-
-            }
-
-            @Override
-            public void onError(EventObject event) {
-
-            }
-        });
-
-    }
-
-
-
 }
