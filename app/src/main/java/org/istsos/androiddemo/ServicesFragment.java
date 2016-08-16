@@ -63,10 +63,11 @@ public class ServicesFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        //load services in app
         loadServicesInApp();
 
         mServicesAdapter = new ArrayAdapter<String>(getActivity(),
@@ -87,6 +88,7 @@ public class ServicesFragment extends Fragment {
                 Toast.makeText(getActivity(), toService, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getActivity(), ObservationActivities.class);
+                intent.putExtra(Intent.EXTRA_TEXT, toService);
                 startActivity(intent);
             }
         });

@@ -46,6 +46,8 @@ public class DisplayGetObservation extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_get_observation);
 
+        handleObservation();
+
         //retrieve data from data array
         DataArray dataArray = obsToDisplay.getResult().getDataArray();
 
@@ -59,7 +61,9 @@ public class DisplayGetObservation extends AppCompatActivity{
         LineDataSet dataSet = new LineDataSet(entries, "Get Observation");
         LineData lineData = new LineData(dataSet);
         //set data to chart
-        chart.setData(lineData);
+        if (chart != null) {
+            chart.setData(lineData);
+        }
 
     }
 
@@ -93,7 +97,7 @@ public class DisplayGetObservation extends AppCompatActivity{
 
     }
 
-    public void handleObservation(View view) {
+    public void handleObservation() {
 
         final Server server = IstSOS.getInstance().getServer("localhost");
 
@@ -164,7 +168,7 @@ public class DisplayGetObservation extends AppCompatActivity{
                     public void onSuccess(EventObject event) {
 
                         obsToDisplay = (Observation) event.getObject();
-
+                        System.out.print(obsToDisplay.getResult());
                     }
 
                     @Override
