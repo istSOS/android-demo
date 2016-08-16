@@ -88,7 +88,7 @@ public class ServicesFragment extends Fragment {
                 Toast.makeText(getActivity(), toService, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getActivity(), ObservationActivities.class);
-                intent.putExtra(Intent.EXTRA_TEXT, toService);
+                intent.putExtra("service", toService);
                 startActivity(intent);
             }
         });

@@ -73,7 +73,8 @@ public class ObservationFragment extends Fragment {
         //retrieve intent from main activity
         Intent intent = getActivity().getIntent();
         //retrieve service name from intent
-        final String serviceName = intent.getStringExtra(Intent.EXTRA_TEXT);
+        final String serviceName = intent.getStringExtra("service");
+        System.out.println(serviceName);
 
         //get reference to the listView
         ListView listView = (ListView) rootView.findViewById(R.id.listview_observation);
@@ -89,25 +90,25 @@ public class ObservationFragment extends Fragment {
 
                     case 0:
                         intent = new Intent(getActivity(), DisplayGetObservation.class);
-                        intent.putExtra(Intent.EXTRA_TEXT, serviceName);
+                        intent.putExtra("service", serviceName);
                         startActivity(intent);
                         break;
 
                     case 1:
                         intent = new Intent(getActivity(), DisplayInsertObservation.class);
-                        intent.putExtra(Intent.EXTRA_TEXT, serviceName);
+                        intent.putExtra("service", serviceName);
                         startActivity(intent);
                         break;
 
                     case 2:
                         intent = new Intent(getActivity(), DescribeSensorActivity.class);
-                        intent.putExtra(Intent.EXTRA_TEXT, serviceName);
+                        intent.putExtra("service", serviceName);
                         startActivity(intent);
                         break;
 
                     case 3:
                         intent = new Intent(getActivity(), DisplayRegisterSensor.class);
-                        intent.putExtra(Intent.EXTRA_TEXT, serviceName);
+                        intent.putExtra("service", serviceName);
                         startActivity(intent);
                         break;
 

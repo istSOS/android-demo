@@ -64,13 +64,13 @@ public class DescribeSensorFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_describe_sensor, container, false);
 
-        //describe sensor request
-        loadDescribeSensor();
-
         //retrieve intent from main activity
         Intent intent = getActivity().getIntent();
         //retrieve service name from intent
-        serviceName = intent.getStringExtra(Intent.EXTRA_TEXT);
+        serviceName = intent.getStringExtra("service");
+
+        //describe sensor request
+        loadDescribeSensor();
 
         String system = describedSensor.getSystem();
         String assignedId = describedSensor.getAssignedId();
@@ -90,7 +90,7 @@ public class DescribeSensorFragment extends Fragment {
 
     protected void loadDescribeSensor(){
 
-        Server server = IstSOS.getInstance().getServer("localhost");
+        final Server server = IstSOS.getInstance().getServer("localhost");
 
         final Service service = server.getService(serviceName);
 
