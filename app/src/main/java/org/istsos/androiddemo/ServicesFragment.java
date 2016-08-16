@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import org.istsos.client.EventObject;
 import org.istsos.client.IstSOS;
@@ -37,6 +38,7 @@ public class ServicesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle menu events.
+
         setHasOptionsMenu(true);
     }
 

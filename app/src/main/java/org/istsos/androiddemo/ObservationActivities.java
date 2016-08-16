@@ -2,6 +2,7 @@ package org.istsos.androiddemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,6 +17,9 @@ public class ObservationActivities extends AppCompatActivity {
                     .add(R.id.container, new ObservationFragment())
                     .commit();
         }
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
