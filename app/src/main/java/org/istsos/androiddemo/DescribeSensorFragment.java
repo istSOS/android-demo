@@ -73,18 +73,22 @@ public class DescribeSensorFragment extends Fragment {
         //describe sensor request
         loadDescribeSensor();
 
-        String system = describedSensor.getSystem();
+        String systemId = describedSensor.getSystemId();
         String assignedId = describedSensor.getAssignedId();
         String description = describedSensor.getDescription();
+        String keywords = describedSensor.getKeywords();
 
-        TextView systemTextView = (TextView) rootView.findViewById(R.id.system_result);
-        systemTextView.setText(system);
+        TextView systemTextView = (TextView) rootView.findViewById(R.id.system_id_result);
+        systemTextView.setText(systemId);
 
         TextView assignedIdView = (TextView) rootView.findViewById(R.id.assigned_id_result);
         assignedIdView.setText(assignedId);
 
         TextView descriptionView = (TextView) rootView.findViewById(R.id.description_result);
         descriptionView.setText(description);
+
+        TextView keywordsView = (TextView) rootView.findViewById(R.id.description_result);
+        keywordsView.setText(keywords);
 
         return rootView;
     }
