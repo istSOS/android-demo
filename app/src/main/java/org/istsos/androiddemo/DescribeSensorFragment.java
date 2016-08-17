@@ -22,7 +22,7 @@ import org.istsos.client.Service;
 public class DescribeSensorFragment extends Fragment {
 
     String serviceName;
-    Procedure describedSensor;
+    Procedure describedSensor = new Procedure();
 
     public DescribeSensorFragment() {
 
@@ -62,12 +62,13 @@ public class DescribeSensorFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View rootView = inflater.inflate(R.layout.fragment_describe_sensor, container, false);
-
         //retrieve intent from main activity
         Intent intent = getActivity().getIntent();
         //retrieve service name from intent
         serviceName = intent.getStringExtra("service");
+        System.out.println(serviceName);
+
+        View rootView = inflater.inflate(R.layout.fragment_describe_sensor, container, false);
 
         //describe sensor request
         loadDescribeSensor();
@@ -94,12 +95,17 @@ public class DescribeSensorFragment extends Fragment {
 
         final Service service = server.getService(serviceName);
 
-        service.describeSensor("BELLINZONA", new IstSOSListener() {
+
+        service.describeSensor("T_LUGANO", new IstSOSListener() {
 
             @Override
             public void onSuccess(EventObject event) {
 
                 describedSensor = (Procedure) event.getObject();
+
+                System.out.println(describedSensor.getName());
+                System.out.println(describedSensor.getSystemId());
+                System.out.println(describedSensor.getSensorType());
 
             }
 
@@ -108,6 +114,6 @@ public class DescribeSensorFragment extends Fragment {
 
             }
         });
-
     }
+
 }
