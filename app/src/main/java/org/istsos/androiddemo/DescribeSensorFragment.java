@@ -23,9 +23,13 @@ public class DescribeSensorFragment extends Fragment {
 
     String serviceName;
     Procedure describedSensor = new Procedure();
+    //variables for set text
+    String description;
+    String name;
+    String keywords;
+    String assignedId;
 
     public DescribeSensorFragment() {
-
     }
 
 
@@ -66,20 +70,14 @@ public class DescribeSensorFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         //retrieve service name from intent
         serviceName = intent.getStringExtra("service");
-        System.out.println(serviceName);
 
         View rootView = inflater.inflate(R.layout.fragment_describe_sensor, container, false);
 
         //describe sensor request
         loadDescribeSensor();
 
-        String systemId = describedSensor.getSystemId();
-        String assignedId = describedSensor.getAssignedId();
-        String description = describedSensor.getDescription();
-        String keywords = describedSensor.getKeywords();
-
-        TextView systemTextView = (TextView) rootView.findViewById(R.id.system_id_result);
-        systemTextView.setText(systemId);
+        TextView systemTextView = (TextView) rootView.findViewById(R.id.name_result);
+        systemTextView.setText(name);
 
         TextView assignedIdView = (TextView) rootView.findViewById(R.id.assigned_id_result);
         assignedIdView.setText(assignedId);
@@ -99,7 +97,6 @@ public class DescribeSensorFragment extends Fragment {
 
         final Service service = server.getService(serviceName);
 
-
         service.describeSensor("T_LUGANO", new IstSOSListener() {
 
             @Override
@@ -107,9 +104,10 @@ public class DescribeSensorFragment extends Fragment {
 
                 describedSensor = (Procedure) event.getObject();
 
-                System.out.println(describedSensor.getName());
-                System.out.println(describedSensor.getSystemId());
-                System.out.println(describedSensor.getSensorType());
+                description = describedSensor.getDescription();
+                name = describedSensor.getName();
+                keywords = describedSensor.getKeywords();
+                assignedId = describedSensor.getAssignedId();
 
             }
 

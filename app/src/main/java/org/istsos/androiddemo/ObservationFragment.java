@@ -89,7 +89,7 @@ public class ObservationFragment extends Fragment {
                 switch(position){
 
                     case 0:
-                        intent = new Intent(getActivity(), DisplayGetObservation.class);
+                        intent = new Intent(getActivity(), GetObservationActivity.class);
                         intent.putExtra("service", serviceName);
                         startActivity(intent);
                         break;
