@@ -87,7 +87,7 @@ public class DescribeSensorFragment extends Fragment {
         TextView descriptionView = (TextView) rootView.findViewById(R.id.description_result);
         descriptionView.setText(description);
 
-        TextView keywordsView = (TextView) rootView.findViewById(R.id.description_result);
+        TextView keywordsView = (TextView) rootView.findViewById(R.id.keywords_result);
         keywordsView.setText(keywords);
 
         return rootView;
