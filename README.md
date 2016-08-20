@@ -8,8 +8,8 @@ If you want to learn more about the istSOS Java-Core go to the [Github repo](htt
 ## Features
 
 * Supports core functionality of the istSOS through Java core.
-* Uses Android-Async-Http library for handling requests
-* Uses MPAndroidChart for displaying Observation data
+* Uses [Android Asynchronous Http Client](http://loopj.com/android-async-http/) library for handling requests
+* Uses [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) for displaying Observation data
 * Compatible with Android API level 21 and above
 
 ## Installation
