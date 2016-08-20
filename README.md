@@ -7,17 +7,32 @@ If you want to learn more about the istSOS Java-Core go to the [Github repo](htt
 
 ## Features
 
-* Supports all core functionality of the istSOS through Java core.
+* Supports core functionality of the istSOS through Java core.
 * Uses Android-Async-Http library for handling requests
 * Uses MPAndroidChart for displaying Observation data
+* Compatible with Android API level 21 and above
 
 ## Installation
 
-Can be done in a few steps:
+Currently, there are two parts to this.
 
-1. Create a project in `Android Studio` or another `IDE` that you are using 
-2. Import the Java core `jar` as a library.
-3. Let `Gradle` sync and it's ready to go!
+First, it is recommended that you import the `Java core` as a module into an Android project.
+
+To achieve that you can:
+
+1. Clone the repo
+2. Import it via the `Android Studio` as a module
+
+`Java Core` is a Gradle-based project so compatibility with Android won't be a problem.
+
+Second, for the moment you have to modify the `istSOS` class request methods so that it
+uses the Android-Async library instead of the AsyncHttp Library which will not work.
+
+Check the `IstSOS.java` in this repo to see how it was done.
+ 
+<b>Note:</b> It will moved to another repository after the GSoC in order to solve this
+issue. So far, that was the only solution found.
+
 
 ## Documentation
 
@@ -34,7 +49,7 @@ Mentors from istSOS: Mirko Cardoso, Milan Antonovic.
 
 ## Release history
 
-* Last updated: 14.08.2016
+* Last updated: 20.08.2016
 
 ## Useful links
 
