@@ -11,7 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".DisplayInsertObservation" />
-        <activity android:name=".DisplayRegisterSensor" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +20,8 @@
         </activity>
         <activity android:name=".ObservationActivities" />
         <activity android:name=".DescribeSensorActivity" />
-        <activity android:name=".GetObservationActivity"></activity>
+        <activity android:name=".GetObservationActivity" />
+        <activity android:name=".RegisterSensorActivity" />
     </application>
 
 </manifest>

@@ -6,20 +6,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class DescribeSensorActivity extends AppCompatActivity {
+public class RegisterSensorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_describe_sensor);
+        setContentView(R.layout.activity_register_sensor);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new DescribeSensorFragment())
+                    .add(R.id.container, new RegisterSensorFragment())
                     .commit();
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
     }
 
     @Override
@@ -42,5 +44,6 @@ public class DescribeSensorActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+
     }
 }

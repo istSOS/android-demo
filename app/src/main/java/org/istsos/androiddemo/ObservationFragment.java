@@ -107,7 +107,7 @@ public class ObservationFragment extends Fragment {
                         break;
 
                     case 3:
-                        intent = new Intent(getActivity(), DisplayRegisterSensor.class);
+                        intent = new Intent(getActivity(), RegisterSensorActivity.class);
                         intent.putExtra("service", serviceName);
                         startActivity(intent);
                         break;

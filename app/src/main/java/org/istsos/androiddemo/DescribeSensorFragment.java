@@ -65,30 +65,34 @@ public class DescribeSensorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        View rootView = inflater.inflate(R.layout.fragment_describe_sensor, container, false);
         //retrieve intent from main activity
         Intent intent = getActivity().getIntent();
         //retrieve service name from intent
         serviceName = intent.getStringExtra("service");
 
-        View rootView = inflater.inflate(R.layout.fragment_describe_sensor, container, false);
-
         //describe sensor request
         loadDescribeSensor();
 
-        TextView systemTextView = (TextView) rootView.findViewById(R.id.name_result);
-        systemTextView.setText(name);
-
-        TextView assignedIdView = (TextView) rootView.findViewById(R.id.assigned_id_result);
-        assignedIdView.setText(assignedId);
-
-        TextView descriptionView = (TextView) rootView.findViewById(R.id.description_result);
-        descriptionView.setText(description);
-
-        TextView keywordsView = (TextView) rootView.findViewById(R.id.keywords_result);
-        keywordsView.setText(keywords);
+        displayData(rootView);
 
         return rootView;
+    }
+
+    private void displayData(View view){
+
+        TextView systemTextView = (TextView) view.findViewById(R.id.name_result);
+        systemTextView.setText(name);
+
+        TextView assignedIdView = (TextView) view.findViewById(R.id.assigned_id_result);
+        assignedIdView.setText(assignedId);
+
+        TextView descriptionView = (TextView) view.findViewById(R.id.description_result);
+        descriptionView.setText(description);
+
+        TextView keywordsView = (TextView) view.findViewById(R.id.keywords_result);
+        keywordsView.setText(keywords);
+
     }
 
     protected void loadDescribeSensor(){
@@ -104,8 +108,8 @@ public class DescribeSensorFragment extends Fragment {
 
                 describedSensor = (Procedure) event.getObject();
 
-                description = describedSensor.getDescription();
                 name = describedSensor.getName();
+                description = describedSensor.getDescription();
                 keywords = describedSensor.getKeywords();
                 assignedId = describedSensor.getAssignedId();
 
