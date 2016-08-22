@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">IstSOS App</string>
+    <string name="services">Available Services</string>
+    <string name="load_services">Load services</string>
+    <string name="service_loader">Press to load services</string>
+    <string name="available_services">Available services</string>
+
+    <string-array name="servicesArrayAdapter">
+
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="register_sensor_message">Sensor has been registered</string>
+
+</resources>
