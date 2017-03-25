@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.istsos.client.EventObject;
 import org.istsos.client.IstSOS;
@@ -41,29 +42,28 @@ public class DescribeSensorFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_main, menu);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.menu_main, menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_describe_sensor, container, false);
         //retrieve intent from main activity
@@ -101,20 +101,17 @@ public class DescribeSensorFragment extends Fragment {
 
         final Service service = server.getService(serviceName);
 
-        service.describeSensor("T_LUGANO", new IstSOSListener() {
+        service.describeSensor("BELLINZONA", new IstSOSListener() {
 
             @Override
             public void onSuccess(EventObject event) {
-
                 describedSensor = (Procedure) event.getObject();
-
                 name = describedSensor.getName();
                 description = describedSensor.getDescription();
                 keywords = describedSensor.getKeywords();
                 assignedId = describedSensor.getAssignedId();
-
+                System.out.println(name);
             }
-
             @Override
             public void onError(EventObject event) {
 

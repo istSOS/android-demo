@@ -409,7 +409,8 @@ public class Service implements IstSOSObject<Service>{
 	public void getObervation(Offering offering, Procedure procedure, ObservedProperty defUrn, 
 			Date beginPosition, Date endPosition, final IstSOSListener callback){
 
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXX");
+        //DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXX");
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
 		Map<String, String> urlKeyMap = new HashMap<String, String>();
 		urlKeyMap.put("url", this.server.getServerUrl());

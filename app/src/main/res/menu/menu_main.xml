@@ -3,8 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_settings"
-        android:title="@string/app_name"
+        android:title="@string/Server"
         android:orderInCategory="100"
         app:showAsAction="never" />
-
+    <item
+        android:id="@+id/service_settings"
+        android:title="@string/services"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/data_manage_settings"
+        android:title="Data Management"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
 </menu>

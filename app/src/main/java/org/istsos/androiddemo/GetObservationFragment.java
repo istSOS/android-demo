@@ -61,25 +61,25 @@ public class GetObservationFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_main, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.menu_main, menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -193,15 +193,18 @@ public class GetObservationFragment extends Fragment {
         });
 
         //add dates
-        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXX");
-        String dateString1 = "2014-05-03T14:30:00";
+        //DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXX");
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        //String dateString1 = "2014-05-03T14:30:00";
+        String dateString1 = "2014-05-03T14:30:00.235-0700";
         try {
             from = sdf.parse(dateString1);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        String dateString2 = "2014-06-03T14:20:00";
+        //String dateString2 = "2014-06-03T14:20:00";
+        String dateString2 = "2014-06-03T14:20:00.235-0700";
         try {
             to = sdf.parse(dateString2);
         } catch (ParseException e) {

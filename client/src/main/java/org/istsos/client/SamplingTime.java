@@ -85,7 +85,4 @@ public class SamplingTime implements IstSOSObject{
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssXX").create();
 		return gson.fromJson(json, SamplingTime.class);
 	}
-	
-	
-
 }

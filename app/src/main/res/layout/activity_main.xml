@@ -1,10 +1,98 @@
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:ignore="MergeRootFrame" >
+    android:background="#ffffff">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:fillViewport="true"
+            >
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonLayout"
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_weight="1.02"
+                        android:src="@drawable/coordinate"
+                        android:id="@+id/coordinate_img_btn"
+                        android:background="#87D37C"
+                        />
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_weight="1"
+                        android:background="#A2DED0"
+                        android:src="@drawable/getobs"
+                        android:id="@+id/observation_img_btn"
+                         />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/new_service"
+                        android:id="@+id/new_service_img_btn"
+                        android:background="#A2DED0"/>
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_weight="1"
+                        android:background="#87D37C"
+                        android:src="@drawable/observed_properties"
+                        android:id="@+id/sensor_describe_img_btn" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/status_1"
+                        android:background="#87D37C"
+                        android:id="@+id/status_img_btn"/>
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_weight="1"
+                        android:background="#A2DED0"
+                        android:id="@+id/about_img_btn"
+                        android:src="@drawable/about_grey"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_weight="1"
+                        android:background="#A2DED0" />
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_weight="1"
+                        android:background="#87D37C"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 </FrameLayout>
